@@ -92,7 +92,8 @@ body {
 
 .home h2,
 .info h2,
-.story h2 {
+.story h2,
+.gallery h2 {
   color: var(--pink);
   font-family: "Sacramento";
   font-size: 5rem;
@@ -179,12 +180,14 @@ body {
   font-weight: 300;
 }
 
-.story {
-  padding-top: 10rem;
+.story,
+.gallery {
+  padding-top: 5rem;
   padding-bottom: 8rem;
 }
 
-.story span {
+.story span,
+.gallery span {
   text-transform: uppercase;
   color: #666;
   font-size: 0.9rem;
@@ -193,7 +196,8 @@ body {
   margin-bottom: 1rem;
 }
 
-.story p {
+.story p,
+.gallery p {
   font-size: 1rem;
   font-weight: 300;
 }
@@ -238,6 +242,64 @@ body {
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.timeline li .timeline-panel {
+  width: 40%;
+  float: left;
+  border: 1px solid #ccc;
+  padding: 2rem;
+  position: relative;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.timeline li .timeline-panel::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  border-top: 15px solid transparent;
+  border-left: 15px solid #ccc;
+  border-right: 0 solid #ccc;
+  border-bottom: 15px solid transparent;
+  top: 70px;
+  right: -15px;
+}
+
+.timeline li .timeline-panel::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  border-top: 14px solid transparent;
+  border-left: 14px solid #fff;
+  border-right: 0 solid #fff;
+  border-bottom: 14px solid transparent;
+  top: 71px;
+  right: -13px;
+}
+
+.timeline li.timeline-inverted .timeline-panel {
+  float: right;
+}
+
+.timeline li.timeline-inverted .timeline-panel::before {
+  border-left-width: 0;
+  border-right-width: 15px;
+  left: -15px;
+  right: auto;
+}
+
+.timeline li.timeline-inverted .timeline-panel::after {
+  border-left-width: 0;
+  border-right-width: 14px;
+  left: -13px;
+  right: auto;
+}
+
+.gallery {
+  background-color: #f5f5f5;
 }
 
 /* Media Query */
@@ -262,6 +324,35 @@ body {
       overflow: hidden;
     }
   }
+
+  .timeline::before {
+    left: 60px;
+  }
+
+  .timeline li .timeline-img {
+    left: 15px;
+    margin-left: 45px;
+    top: 16px;
+  }
+
+  .timeline li .timeline-panel {
+    width: calc(100% - 200px);
+    float: right;
+  }
+
+  .timeline li .timeline-panel::before {
+    border-left-width: 0;
+    border-right-width: 15px;
+    left: -15px;
+    right: auto;
+  }
+
+  .timeline li .timeline-panel::after {
+    border-left-width: 0;
+    border-right-width: 14px;
+    left: -13px;
+    right: auto;
+  }
 }
 
 /* Tablet */
@@ -273,9 +364,15 @@ body {
       margin: 5px;
     }
   }
+
   .mynavbar .nav-link {
     text-transform: uppercase;
     text-align: center;
+  }
+
+  .timeline li .timeline-img {
+    width: 140px;
+    height: 140px;
   }
 }
 
@@ -287,5 +384,23 @@ body {
       padding: 40px;
       margin: 2px;
     }
+  }
+
+  .timeline li .timeline-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .timeline li .timeline-panel {
+    width: 60%;
+    transform: translateX(-20px);
+  }
+
+  .timeline li .timeline-panel::before {
+    top: 35px;
+  }
+
+  .timeline li .timeline-panel::after {
+    top: 36px;
   }
 }
